@@ -1,0 +1,20 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>鹰眼-登录</title>
+    <link rel="icon" href="{% static 'default/img/eagle.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'default/css/login.css' %}?{{ VERSION }}"/>
+    <script src="{% static 'default/js/jquery-3.2.1.min.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'default/js/extend.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'default/js/login.js' %}?{{ VERSION }}"></script>
+</head>
+<body>
+<img src="{% static 'default/img/eagle.png' %}"/>
+<form>
+    {% csrf_token %}
+    <input type="text" id="username" class="input_box" value="{{ username }}" placeholder="账号">
+    <input type="password" id="password" class="input_box" placeholder="密码">
+</form>
+<button id="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+</body>
+</html>

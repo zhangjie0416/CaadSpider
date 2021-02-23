@@ -1,0 +1,3 @@
+DOWNLOAD_API = 'http://172.16.2.82:10012/download'
+
+PORT = 10013

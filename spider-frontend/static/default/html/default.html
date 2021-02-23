@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+<!--head-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <!--title-->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'default/img/eagle.ico' %}"/>
+    <!--style-->
+    <link rel="stylesheet" href="{% static 'default/css/jquery.dataTables-1.10.16.min.css' %}?{{ VERSION }}"/>
+    <link rel="stylesheet" href="{% static 'default/css/default.css' %}?{{ VERSION }}"/>
+    <link rel="stylesheet" href="{% static 'default/css/xcConfirm.css' %}?{{ VERSION }}"/>
+    {% block style %}{% endblock %}
+    <!--script-->
+    <script src="{% static 'default/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'default/js/jquery.dataTables-1.10.16.min.js' %}"></script>
+    <script src="{% static 'default/js/extend.js' %}"></script>
+    <script src="{% static 'default/js/default.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'default/js/xcConfirm.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'default/js/jquery.cookie-1.4.1.js' %}"></script>
+    {% block script %}{% endblock %}
+</head>
+<!--body-->
+<body>
+<button id="logout">Quit</button>
+<header>
+    <div id="sidebar-trigger" class="trigger">
+        <img src="{% static 'default/img/menu.png' %}"/>
+    </div>
+    <nav id="sidebar-nav">
+        <ul>
+            <li class="title">采 集</li>
+            <li><a href="/spider/example.html">模板</a></li>
+            <li><a href="/spider/setting.html">配置</a></li>
+            <li><a href="/spider/running.html">运行</a></li>
+            {#            <li class="title">清 洗</li>#}
+            {#            <li><a href="/clean/setting.html">配置</a></li>#}
+            {#            <li><a href="/clean/running.html">运行</a></li>#}
+            {#            <li><a href="export.html">导出</a></li>#}
+            {#            <li class="title">入 库</li>#}
+            {#            <li><a href="example.html">模板</a></li>#}
+            {#            <li><a href="setting.html">配置</a></li>#}
+            {#            <li><a href="running.html">运行</a></li>#}
+            {#            <li><a href="export.html">导出</a></li>#}
+            <li class="title">帮 助</li>
+            <li><a href="/help.html">教程</a></li>
+            {#            <li><a href="help.html">发布</a></li>#}
+        </ul>
+    </nav>
+</header>
+<div id="loading" class="loader">
+</div>
+{% block body %}{% endblock %}
+<footer>中估鹰眼平台 ©2017-2018 上海中估联信息技术有限公司 版本：{{ VERSION }}</footer>
+</body>
+</html>

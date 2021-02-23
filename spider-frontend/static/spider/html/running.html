@@ -1,0 +1,44 @@
+{% extends "default/html/default.html" %}{% load static %}
+{% block title %}
+    采集-运行
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'spider/css/running.css' %}?{{ VERSION }}"/>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'spider/js/running.js' %}?{{ VERSION }}"></script>
+{% endblock %}
+{% block body %}
+    <aside style="position: fixed;z-index: 3;top: 0;left:55px;line-height: 50px">
+        <button class="focus">运行</button>
+        <button>结束</button>
+        <button id="reload" value="1">刷新(5s)</button>
+        <input type="date" id="from_date">
+    </aside>
+    <article>
+        <div id="popup">
+            <div class="title">
+                <p>日志</p>
+                <span>x</span>
+            </div>
+            <textarea class="cont"></textarea>
+        </div>
+        <div id="mask_shadow"></div>
+        <section>
+            <div class="top_aside">
+                <label>单个：</label>
+                <button id="detail">详情</button>
+                <button id="delete" style="background-color: #f15044">删除</button>
+                <label style="margin-left: 20px">批量：</label>
+                <input id="check_all" type="checkbox">
+                <button id="more_timer">定时</button>
+                <button id="more_start" style="background-color: #f15044">开始</button>
+                <button id="more_stop" style="background-color: #f15044">结束</button>
+                <button id="export">导出</button>
+                <label style="margin-left: 20px">日志：</label>
+                <button id='log_url'>网址</button>
+                <button id='log_field'>字段</button>
+            </div>
+        </section>
+    </article>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "default/html/default.html" %}{% load static %}
+{% block title %}
+    帮助
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'default/css/help.css' %}?{{ VERSION }}"/>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'default/js/help.js' %}?{{ VERSION }}"></script>
+{% endblock %}
+{% block body %}
+    <article>
+        <section>
+            <h1>个人中心</h1>
+            <hr/>
+            <p>1. 密码修改</p>
+            <ul>
+                <li>
+                    <lable>账号</lable>
+                    <lable id="username">{{ username }}</lable>
+                </li>
+                <li>
+                    <label>密码</label>
+                    <input type="password" id="password" width="150px"/>
+                    <button id="update">修改</button>
+                    <input type="checkbox" value="可见" style="width:20px;height:20px;vertical-align: middle"/>
+                </li>
+            </ul>
+            {% if username == "spider" %}
+                <p>2. 用户创建</p>
+                <ul>
+                    <li>
+                        <lable>账号</lable>
+                        <input type="text" id="new_username"/>
+                    </li>
+                    <li>
+                        <label>密码</label>
+                        <input type="text" id="new_password"/>
+                    </li>
+                    <li>
+                        <label>公司</label>
+                        <input type="text" id="new_company"/>
+                        <button id="create">创建</button>
+
+                    </li>
+                </ul>
+                <p>3. 新版通知</p>
+                <ul>
+                    <li>
+                        <label>全体</label>
+                        <button id="message">发布通知</button>
+                    </li>
+                </ul>
+                <script>
+                    $("#create").click(function () {
+                        var username = $('#new_username').val();
+                        var password = $('#new_password').val();
+                        var company = $('#new_company').val();
+                        $.ajax({
+                            url: "/help/create_user/",
+                            data: {"username": username, "password": password, "company": company},
+                            type: "post",
+                            dataType: 'text',
+                            success: function (data) {
+                                $.popUp("用户创建成功！", "success");
+                                $('#new_username,#new_password,#new_company').val('')
+                            }
+                        });
+                    });
+                    $("#message").click(function () {
+                        $.ajax({
+                            url: "/help/new_version",
+                            type: "get",
+                            dataType: 'text',
+                            success: function (data) {
+                                if (data == '1')
+                                    $.popUp("新版通知成功！", "success");
+                                else
+                                    $.popUp("新版通知失败！", "error");
+                            }
+                        });
+                    });
+                </script>
+            {% endif %}
+        </section>
+        <section style="border-width: 0 1px;border-color: gray;border-style: solid">
+            <h1>使用帮助</h1>
+            <hr/>
+            <p>1. 术语解释</p>
+            <ul>
+                <li>英文字符：用于配置采集规则，区别于中文字符</li>
+                <p>例如：[""/“”]，[''/‘’]，[,/，]，[./。]等</p>
+                <li>字符串：由数字、字母、下划线等组成的一串字符</li>
+                <p>例如："案例标题"，"communityId"，"350万元"等</p>
+                <li>普通文本：字符串都是普通文本</li>
+                <p>例如：在不使用正则表达式的情况下，字符串都是普通文本</p>
+                <li>regex：正则表达式，<a href="http://www.jb51.net/tools/regexsc.htm" target="_blank">详情点击</a>
+                </li>
+                <p>例如："\d+"，"[a-zA-z]"，"\w+[省市]\w+[市区]\w+[市区县]"等</p>
+                <li>xpath：XML/HTML提取规则，<a href="http://www.w3school.com.cn/xpath/xpath_syntax.asp" target="_blank">详情点击</a></li>
+                <p>例如：xpath可用于网页中查找所需文本</p>
+                <li>函数：用于提取内容再处理的方法</li>
+                <p>例如："350万元|replace("万元","")"的结果是"350"</p>
+            </ul>
+            <p>2. 可用函数</p>
+            <ul>
+                <li>字符串替换：replace("regex", "new_string")</li>
+                <p>"regex"：被替换字符串，可以是普通文本或者正则表达式</p>
+                <p>"new_string"：新的字符串，普通文本</p>
+                <li>字符串匹配：match("regex", "number")</li>
+                <p>"regex"：被替换字符串，可以是普通文本或者正则表达式</p>
+                <p>"number"：正则分组Id，默认为0</p>
+                <li>字符串过滤：filter("regex", "yes/no")</li>
+                <p>"regex"：关键字过滤，可以是普通文本或者正则表达式</p>
+                <p>"yes/no"：是/否，是则保留；否则舍弃</p>
+                <li>字符串分割：incise("regex", "number")</li>
+                <p>"regex"：分隔符</p>
+                <p>"number"：选取分割后第几个结果</p>
+                <li>日期时间转换：formatime()</li>
+                <p>无参数，用于将"1天前、07-02"等改为正常时间格式"2018-07-02 18:00:000"</p>
+            </ul>
+            <br/>
+            <br/>
+        </section>
+        <section>
+            <h1>版本日志</h1>
+            <hr/>
+            <ul id="versions"></ul>
+        </section>
+    </article>
+{% endblock %}

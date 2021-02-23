@@ -1,0 +1,28 @@
+{% extends "default/html/default.html" %}{% load static %}
+{% block title %}
+    采集-模板
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'spider/css/example.css' %}?{{ VERSION }}"/>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'spider/js/example.js' %}?{{ VERSION }}"></script>
+{% endblock %}
+{% block body %}
+    <aside style="position: fixed;z-index: 3;top: 0;left:55px;line-height: 50px">
+        <button class="focus">个人</button>
+        <button>所有</button>
+    </aside>
+    <article>
+        <section>
+            <div class="top_aside">
+                <label>单个：</label>
+                <button id="detail">详情</button>
+                <button id="delete" style="background-color: #f15044">删除</button>
+            </div>
+            <table id="user" class="display" cellspacing="0" width="100%"></table>
+            <table id="all" class="display" cellspacing="0" width="100%"></table>
+        </section>
+    </article>
+{% endblock %}
+

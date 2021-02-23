@@ -1,0 +1,46 @@
+/*article*/
+article section {
+    width: 50%;
+    border: 0 solid gray;
+    height: 90%;
+}
+
+article section h1 {
+    text-align: center;
+}
+
+article section label {
+    vertical-align: middle;
+}
+
+article section textarea {
+    height: 475px;
+    min-height: 200px;
+    white-space: nowrap;
+    display: table-column;
+}
+
+article section div#fields_setting {
+    text-align: center;
+}
+
+article section div#fields_setting > div {
+    text-align: left;
+    display: none;
+}
+
+article section div#fields_setting div.foucs_show {
+    display: block;
+}
+
+article section div#fields_setting > img {
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.shortcut {
+    width: auto;
+    background-color: #20B2AA;
+}

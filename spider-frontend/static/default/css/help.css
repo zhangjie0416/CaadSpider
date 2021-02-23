@@ -1,0 +1,27 @@
+/*article*/
+article section {
+    width: 33.3333%;
+    border: 0 solid gray;
+}
+
+article section h1 {
+    text-align: center
+}
+
+article section ul li {
+    margin-top: 10px;
+}
+
+article section ul p {
+    margin: 2px;
+}
+
+#versions {
+    max-height: 760px;
+    overflow-y: scroll;
+}
+
+#versions h4 {
+    text-align: left;
+    font-weight: bold;
+}

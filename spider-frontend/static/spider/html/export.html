@@ -1,0 +1,24 @@
+{% extends "default/html/default.html" %}{% load static %}
+{% block title %}
+    采集-导出
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'spider/css/export.css' %}?{{ VERSION }}"/>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'spider/js/export.js' %}?{{ VERSION }}"></script>
+{% endblock %}
+{% block body %}
+    <article>
+        <section>
+            <div class="top_aside">
+                <input type="date" id="begin_date" class="input_text" style="width:150px;"/>
+                <label>-</label>
+                <input type="date" id="end_date" class="input_text" style="width:150px;"/>
+                <button id="search">查询</button>
+                <button id="download">下载</button>
+            </div>
+            <div id="table" style="width: 100%;overflow-x: auto"></div>
+        </section>
+    </article>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "default/html/default.html" %}{% load static %}
+<!--title-->
+{% block title %}
+    采集-配置
+{% endblock %}
+<!--style-->
+{% block style %}
+    <link rel="stylesheet" href="{% static 'spider/css/setting.css' %}?{{ VERSION }}"/>
+{% endblock %}
+<!--script-->
+{% block script %}
+    <script src="{% static 'default/js/auto-line-number.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'spider/js/setting.js' %}?{{ VERSION }}"></script>
+{% endblock %}
+<!--body-->
+{% block body %}
+    <aside style="position: fixed;z-index: 3;top: 0;left:55px;line-height: 50px">
+        <button id="save_example">保存模板</button>
+        <button id="save_task">保存任务</button>
+        <button id="save_as_example">另存模板</button>
+        <button id="save_as_task">另存任务</button>
+        <input type="text" id="group_name" placeholder="分组名称"/>
+        <input type="text" id="task_name" placeholder="任务名称"/>
+    </aside>
+    <article>
+        <section>
+            <h1>配置（必填）</h1>
+            <p>1.采集方式</p>
+            <input type="radio" name="type" value="0" checked/><span>增量</span>
+            <input type="radio" name="type" value="1"/><span>全量</span>
+            <p>2.一级网址</p>
+            <input type="text" id="first_urls" placeholder="http://www.abc.com?city={自定义,北京,上海}&page={1-4}.html"/>
+            <button type="text" id="get_first_urls">测试</button>
+            <p>3.提取规则</p>
+            <input type="text" id="urls_xpath" placeholder="xpath/regex，注：网址提取规则为空，默认从一级网址中采集字段"/>
+            <p>4.采集字段</p>
+            <div style="margin: 12px 0;">
+                <button class="shortcut" value='"":""'>"":""</button>
+                <button class="shortcut" value='(.*?)'>(.*?)</button>
+                <button class="shortcut" value='|replace("","")'>replace</button>
+                <button class="shortcut" value='|match("","")'>match</button>
+                <button class="shortcut" value='|filter("","")'>filter</button>
+                <button class="shortcut" value='|incise("","")'>incise</button>
+                <button class="shortcut" value='|formatime()'>formatime</button>
+                <button><a href="http://regex.zjmainstay.cn/" target="_blank" style="text-decoration: none;color: black">Regex测试</a></button>
+            </div>
+            <div id="fields_setting">
+                <div>
+                    <textarea class="content" spellcheck="false" placeholder="&quot;固定字段&quot;:&quot;上海市&quot;"></textarea>
+                </div>
+                <div class="foucs_show">
+                    <textarea class="content" spellcheck="false" placeholder="&quot;单条采集&quot;:&quot;xpath/regex|function(&quot;&quot;,&quot;&quot;)&quot;"></textarea>
+                </div>
+                <div>
+                    <input type="text" style="margin-bottom: -2px;" placeholder="多条采集区域xpath">
+                    <textarea class="content" spellcheck="false" placeholder="&quot;多条采集&quot;:&quot;xpath/regex|function(&quot;&quot;,&quot;&quot;)&quot;"></textarea>
+                </div>
+                <img src="{% static 'default/img/arrow_left.png' %}" style="margin: 0 100px 0 -100px">
+                <img src="{% static 'default/img/arrow_right.png' %}">
+            </div>
+        </section>
+        <section>
+            <h1>其它（可选）</h1>
+            <p>1.定时采集</p>
+            <input type="number" id="timer" value="0" style="margin-right: 5px">天
+            <p>2.一级网址</p>
+            <input type="text" id="first_url" placeholder="http://www.abc.com?city=上海&page=1.html" style="width:500px;"/>
+            <button id="get_urls">测试</button>
+            <p>3.二级网址</p>
+            <input type="text" id="second_url" placeholder="内容页网址"/>
+            <button id="get_fields">测试</button>
+            <p>4.提交源码</p>
+            <input type="text" id="url" placeholder="https://www.baidu.com"/>
+            <button id="get_html">获取</button>
+            <button id="save_html">提交</button>
+            <textarea id="html" spellcheck="false" style="margin-top: 11px;white-space:normal;word-break:break-all;" placeholder="可通过在网页上右键'查看网络源代码'获取，粘贴至此处"></textarea>
+        </section>
+    </article>
+{% endblock %}

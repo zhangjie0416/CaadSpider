@@ -1,0 +1,51 @@
+body {
+    top: 150px;
+    left: 50%;
+    position: absolute;
+    margin: 0 auto;
+    margin-left: -170px;
+    text-align: center;
+}
+
+.input_box {
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin: 20px;
+    text-align: center;
+    font-family: Consolas, 'Microsoft YaHei';
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.input_remember {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+span {
+    font-size: 14px;
+}
+
+img {
+    margin-bottom: 40px;
+}
+
+#login {
+    background-color:#20B2AA;
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    border: 0;
+    vertical-align: middle;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+#login:hover {
+    opacity: 0.8;
+    cursor: hand;
+}
